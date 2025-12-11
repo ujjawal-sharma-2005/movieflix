@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>MovieFlix - Book Movie Tickets</title>
+
+    <meta name="description" content="Movie booking - select movie, theatre, date & time" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Core CSS (keep the same file names you already have) -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="css/fontAwesome.css" />
+    <link rel="stylesheet" href="css/hero-slider.css" />
+    <link rel="stylesheet" href="css/owl-carousel.css" />
+    <link rel="stylesheet" href="css/datepicker.css" />
+    <link rel="stylesheet" href="css/tooplate-style.css" />
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet" />
+    <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+
+    <style>
+      /* small local helpers so pasted HTML looks correct even if you didn't change all CSS yet */
+      .nf-scroller-wrap { position: relative; margin: 18px 0; }
+      .nf-prev, .nf-next { position: absolute; top: 50%; transform: translateY(-50%); background:#111; color:#fff; border:0; width:40px; height:40px; border-radius:4px; z-index:10; }
+      .nf-prev { left: 5px; }
+      .nf-next { right: 5px; }
+      .nf-scroller { padding: 10px 50px; } /* leave space for prev/next */
+      .nf-item { width: 220px; margin-right: 12px; background:#111; border-radius:6px; overflow:hidden; color:#fff; text-align:left; }
+      .nf-item img { display:block; width:100%; height:330px; object-fit:cover; }
+      .nf-item .card-body { padding:10px; font-size:14px; }
+      .booking-form .label { color:#bbb; font-size:12px; text-transform:uppercase; margin-bottom:6px; display:block; }
+      .price-row { font-size:18px; font-weight:700; color:#e50914; margin-top:6px; }
+      .seat-summary { color:#ddd; font-size:13px; margin-top:6px; }
+    </style>
+  </head>
+
+  <body>
+    <!-- HERO / Booking -->
+    <section class="banner" id="top">
+      <div class="container">
+        <div class="row">
+          <!-- Left side: logo + social -->
+          <div class="col-md-5">
+            <div class="left-side">
+              <div class="logo">
+                <img src="img/logo.png" alt="MovieFlix Logo" style="max-width:160px;">
+              </div>
+
+              <div class="tabs-content">
+                <h4>Follow Us for Trailers & Offers</h4>
+                <ul class="social-links">
+                  <li><a href="https://facebook.com"><em>Facebook</em> <i class="fa fa-facebook"></i></a></li>
+                  <li><a href="https://youtube.com"><em>YouTube</em> <i class="fa fa-youtube"></i></a></li>
+                  <li><a href="https://instagram.com"><em>Instagram</em> <i class="fa fa-instagram"></i></a></li>
+                </ul>
+              </div>
+
+              <div class="page-direction-button">
+                <a href="contact.html"><i class="fa fa-phone"></i> Contact Support</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right side: booking form -->
+          <div class="col-md-6 col-md-offset-1">
+            <section id="first-tab-group" class="tabgroup">
+              <div id="tab1">
+                <div class="submit-form booking-form" style="background: rgba(10,10,10,0.85); padding:28px; border-radius:6px;">
+                  <h4>Book Tickets — <em>Select Movie & Showtime</em></h4>
+
+                  <!-- Booking form (IDs must match booking.js) -->
+                  <form id="form-submit" action="#" method="get" onsubmit="return false;">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label class="label" for="movieSelect">Movie</label>
+                        <select id="movieSelect" name="movie" required>
+                          <option value="">Choose a movie...</option>
+                          <!-- booking.js will populate movies automatically from sampleData when loaded -->
+                        </select>
+                      </div>
+
+                      <div class="col-md-6">
+                        <label class="label" for="theatreSelect">Theatre</label>
+                        <select id="theatreSelect" name="theatre" required>
+                          <option value="">Choose a theatre...</option>
+                        </select>
+                      </div>
+
+                      <div class="col-md-6" style="margin-top:12px;">
+                        <label class="label" for="dateSelect">Date</label>
+                        <select id="dateSelect" name="date" required>
+                          <option value="">Select show date...</option>
+                        </select>
+                      </div>
+
+                      <div class="col-md-6" style="margin-top:12px;">
+                        <label class="label" for="timeSelect">Time</label>
+                        <select id="timeSelect" name="time" required>
+                          <option value="">Select showtime...</option>
+                        </select>
+                      </div>
+
+                      <div class="col-md-6" style="margin-top:12px;">
+                        <label class="label" for="ticketCount">Tickets</label>
+                        <input id="ticketCount" type="number" min="1" value="1" class="form-control" />
+                      </div>
+
+                      <div class="col-md-6" style="margin-top:12px;">
+                        <label class="label" for="seatType">Seat Category</label>
+                        <select id="seatType" name="seatType" class="form-control">
+                          <option value="">Choose seat type...</option>
+                          <!-- booking.js will populate seat types per auditorium -->
+                        </select>
+                      </div>
+
+                      <div class="col-md-12" style="margin-top:12px;">
+                        <button id="openSeatMap" class="primary-button" style="background:#e50914;border:none;padding:10px 16px;color:#fff;border-radius:4px;">Select Seats</button>
+                      </div>
+
+                      <div class="col-md-6" style="margin-top:12px;">
+                        <div class="price-row">Total: <span id="priceDisplay">—</span></div>
+                        <div id="seatSummary" class="seat-summary">No seats selected</div>
+                      </div>
+
+                      <div class="col-md-6 text-right" style="margin-top:12px;">
+                        <button id="bookBtn" class="primary-button" style="background:#e50914;border:none;padding:12px 18px;color:#fff;border-radius:4px;">Book Now</button>
+                      </div>
+                    </div>
+                  </form>
+
+                  <p style="color:#999;margin-top:12px;font-size:13px;">Secure payments · Instant confirmation · Mobile & print tickets</p>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NOW SHOWING (Large poster row) -->
+    <section id="nowShowingSection" style="background:#000;padding:40px 0;">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Now Showing</h2>
+          <p style="color:#aaa;margin-top:8px;">Popular right now — click a poster to pre-fill booking</p>
+        </div>
+
+        <div id="nowShowing" class="nf-scroller-wrap">
+          <button class="nf-prev">‹</button>
+          <div class="nf-scroller" role="list">
+            <!-- Each nf-item has data-movie-id that matches booking.js sampleData movie ids -->
+            <div class="nf-item" tabindex="0" data-movie="m001">
+              <img src="img/movie1.jpg" alt="Kantara: A Legend – Chapter 1" />
+              <div class="card-body">
+                <strong>Kantara: A Legend – Chapter 1</strong><br />
+                <small>2h 10m · PG-13</small>
+              </div>
+            </div>
+
+            <div class="nf-item" tabindex="0" data-movie="m002">
+              <img src="img/movie2.jpg" alt="The Mastermind" />
+              <div class="card-body">
+                <strong>The Mastermind</strong><br />
+                <small>1h 50m · U/A</small>
+              </div>
+            </div>
+
+            <div class="nf-item" tabindex="0" data-movie="m001">
+              <img src="img/movie3.jpg" alt="Kantara: A Legend – Chapter 1" />
+              <div class="card-body">
+                <strong>Dhurandhar</strong><br />
+                <small>3h 10m · PG-13</small>
+              </div>
+            </div>
+
+            <div class="nf-item" tabindex="0" data-movie="m001">
+              <img src="img/movie4.jpg" alt="Kantara: A Legend – Chapter 1" />
+              <div class="card-body">
+                <strong>Black Phone 2</strong><br />
+                <small>1h 54m · PG-13</small>
+              </div>
+            </div>
+
+            <div class="nf-item" tabindex="0" data-movie="m001">
+              <img src="img/movie5.jpg" alt="Kantara: A Legend – Chapter 1" />
+              <div class="card-body">
+                <strong>Bugonia</strong><br />
+                <small>2h  · PG-13</small>
+              </div>
+            </div>
+            <div class="nf-item" tabindex="0" data-movie="m001">
+              <img src="img/movie6.jpg" alt="Kantara: A Legend – Chapter 1" />
+              <div class="card-body">
+                <strong>Troll 2</strong><br />
+                <small>2h 30m · PG-13</small>
+              </div>
+            </div>
+            <!-- Add more movie cards as needed -->
+          </div>
+          <button class="nf-next">›</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRENDING ROW (smaller cards) -->
+    <section id="trendingSection" style="background:#070707;padding:30px 0;">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Trending</h2>
+        </div>
+
+        <div id="trending" class="nf-scroller-wrap">
+          <button class="nf-prev">‹</button>
+          <div class="nf-scroller" role="list">
+            <div class="nf-item" tabindex="0" data-movie="m001">
+              <img src="img/movie1.jpg" alt="Kantara: A Legend – Chapter 1" />
+              <div class="card-body">
+                <strong>Kantara: A Legend – Chapter 1</strong><br />
+                <small>Now Playing</small>
+              </div>
+            </div>
+
+            <div class="nf-item" tabindex="0" data-movie="m002">
+              <img src="img/movie2.jpg" alt="The Mastermind" />
+              <div class="card-body">
+                <strong>The Mastermind</strong><br />
+                <small>Now Playing</small>
+              </div>
+            </div>
+            <div class="nf-item" tabindex="0" data-movie="m001">
+              <img src="img/movie3.jpg" alt="Kantara: A Legend – Chapter 1" />
+              <div class="card-body">
+                <strong>Dhurandhar</strong><br />
+                <small>3h 10m · PG-13</small>
+              </div>
+            </div>
+
+            <div class="nf-item" tabindex="0" data-movie="m001">
+              <img src="img/movie4.jpg" alt="Kantara: A Legend – Chapter 1" />
+              <div class="card-body">
+                <strong>Black Phone 2</strong><br />
+                <small>1h 54m · PG-13</small>
+              </div>
+            </div>
+
+            <div class="nf-item" tabindex="0" data-movie="m001">
+              <img src="img/movie5.jpg" alt="Kantara: A Legend – Chapter 1" />
+              <div class="card-body">
+                <strong>Bugonia</strong><br />
+                <small>2h · PG-13</small>
+              </div>
+            </div>
+            <div class="nf-item" tabindex="0" data-movie="m001">
+              <img src="img/movie6.jpg" alt="Kantara: A Legend – Chapter 1" />
+              <div class="card-body">
+                <strong>Troll 2</strong><br />
+                <small>2h 30m · PG-13</small>
+              </div>
+            </div>
+
+            <!-- more trending items -->
+          </div>
+          <button class="nf-next">›</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- UPCOMING -->
+    <section id="upcomingSection" style="background:#000;padding:30px 0;">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Upcoming</h2>
+          <p style="color:#aaa;margin-top:8px;">Book advance tickets for the hottest premieres</p>
+        </div>
+
+        <div id="upcoming" class="nf-scroller-wrap">
+          <button class="nf-prev">‹</button>
+          <div class="nf-scroller" role="list">
+            <div class="nf-item" tabindex="0" data-movie="m003">
+              <img src="img/movie3.jpg" alt="Coming Soon" />
+              <div class="card-body">
+                <strong>Dhurandhar</strong><br />
+                <small>Released</small>
+              </div>
+            </div>
+
+            <div class="nf-item" tabindex="0" data-movie="m004">
+              <img src="img/movie4.jpg" alt="Coming Soon 2" />
+              <div class="card-body">
+                <strong>Black Phone 2</strong><br />
+                <small>Released</small>
+              </div>
+            </div>
+            <div class="nf-item" tabindex="0" data-movie="m001">
+              <img src="img/movie1.jpg" alt="Kantara: A Legend – Chapter 1" />
+              <div class="card-body">
+                <strong>Kantara: A Legend – Chapter 1</strong><br />
+                <small>2h 10m · PG-13</small>
+              </div>
+            </div>
+
+            <div class="nf-item" tabindex="0" data-movie="m001">
+              <img src="img/movie2.jpg" alt="Kantara: A Legend – Chapter 1" />
+              <div class="card-body">
+                <strong>The Mastermind</strong><br />
+                <small>1h 50m · PG-13</small>
+              </div>
+            </div>
+
+            <div class="nf-item" tabindex="0" data-movie="m001">
+              <img src="img/movie5.jpg" alt="Kantara: A Legend – Chapter 1" />
+              <div class="card-body">
+                <strong>Bugonia</strong><br />
+                <small>2h· PG-13</small>
+              </div>
+            </div>
+            <div class="nf-item" tabindex="0" data-movie="m001">
+              <img src="img/movie6.jpg" alt="Kantara: A Legend – Chapter 1" />
+              <div class="card-body">
+                <strong>Troll 2</strong><br />
+                <small>2h 30m · PG-13</small>
+              </div>
+            </div>
+            <!-- more upcoming -->
+          </div>
+          <button class="nf-next">›</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background:#070707;color:#888;padding:50px 0;">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <div class="primary-button">
+              <a href="#" class="scroll-top">Back To Top</a>
+            </div>
+
+            <ul class="social-icons" style="list-style:none;padding:0;margin:20px 0;">
+              <li style="display:inline-block;margin:0 6px;"><a href="#"><i class="fa fa-facebook"></i></a></li>
+              <li style="display:inline-block;margin:0 6px;"><a href="#"><i class="fa fa-twitter"></i></a></li>
+              <li style="display:inline-block;margin:0 6px;"><a href="#"><i class="fa fa-instagram"></i></a></li>
+            </ul>
+
+            <p style="color:#666;font-size:13px;">&copy; <span id="year"></span> MovieFlix — Secure booking &amp; great seats</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JS (order matters) -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+
+    <script src="js/vendor/bootstrap.min.js"></script>
+    <script src="js/datepicker.js"></script>
+
+    <!-- keep plugin file (hero slider, lightbox, mixitup) -->
+    <script src="js/plugins.js"></script>
+
+    <!-- your converted main (uses nf-scroller) -->
+    <script src="js/main.js"></script>
+
+    <!-- booking script (the one I provided earlier) -->
+    <script src="js/booking.js"></script>
+
+    <!-- tiny glue code: clicking a poster pre-fills movie select -->
+    <script>
+      (function() {
+        // set current year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        function setMovieFromPoster(movieId) {
+          var sel = document.getElementById('movieSelect');
+          if (!sel) return;
+          // set value if option exists; otherwise attempt to add it and select
+          var opt = sel.querySelector('option[value="' + movieId + '"]');
+          if (opt) {
+            sel.value = movieId;
+            sel.dispatchEvent(new Event('change'));
+            // scroll to booking area
+            document.getElementById('form-submit').scrollIntoView({ behavior: 'smooth', block: 'center' });
+          } else {
+            // option not yet loaded (booking.js populates on DOMContentLoaded), wait a little
+            setTimeout(function() { setMovieFromPoster(movieId); }, 150);
+          }
+        }
+
+        // click handler for nf-item posters
+        document.addEventListener('click', function(e) {
+          var el = e.target;
+          // find ancestor with data-movie attribute
+          while (el && el !== document) {
+            if (el.classList && el.classList.contains('nf-item') && el.dataset.movie) {
+              setMovieFromPoster(el.dataset.movie);
+              return;
+            }
+            el = el.parentNode;
+          }
+        });
+
+        // keyboard accessibility: Enter on nf-item to prefill
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter') {
+            var active = document.activeElement;
+            if (active && active.classList && active.classList.contains('nf-item') && active.dataset.movie) {
+              setMovieFromPoster(active.dataset.movie);
+            }
+          }
+        });
+      })();
+    </script>
+
+    <!-- inline scroll / nav helpers (kept from original) -->
+    <script type="text/javascript">
+      $(document).ready(function () {
+        // navigation click actions 
+        $('.scroll-link').on('click', function(event){
+          event.preventDefault();
+          var sectionID = $(this).attr("data-id");
+          scrollToID('#' + sectionID, 750);
+        });
+        // scroll to top action
+        $('.scroll-top').on('click', function(event) {
+          event.preventDefault();
+          $('html, body').animate({scrollTop:0}, 'slow');         
+        });
+        // mobile nav toggle
+        $('#nav-toggle').on('click', function (event) {
+          event.preventDefault();
+          $('#main-nav').toggleClass("open");
+        });
+      });
+      // scroll function
+      function scrollToID(id, speed){
+        var offSet = 0;
+        var targetOffset = $(id).offset().top - offSet;
+        var mainNav = $('#main-nav');
+        $('html,body').animate({scrollTop:targetOffset}, speed);
+        if (mainNav.hasClass("open")) {
+          mainNav.css("height", "1px").removeClass("in").addClass("collapse");
+          mainNav.removeClass("open");
+        }
+      }
+      if (typeof console === "undefined") {
+        console = { log: function() { } };
+      }
+    </script>
+  </body>
+</html>

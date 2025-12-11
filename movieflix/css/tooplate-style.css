@@ -1,0 +1,417 @@
+/* 
+---------------------------------------------
+  NETFLIX STYLE MOVIE TICKET BOOKING TEMPLATE
+  Converted from Flight Template → Movie Template
+  Theme: Black, Red (#e50914), White
+---------------------------------------------
+*/
+
+/* GLOBAL */
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', Arial, sans-serif;
+}
+
+body {
+    overflow-x: hidden;
+    background-color: #000;
+    color: #fff;
+}
+
+ul {
+    list-style: none;
+}
+
+p {
+    font-size: 14px;
+    line-height: 24px;
+}
+
+/* SECTION HEADINGS */
+
+.section-heading h2 {
+    text-align: center;
+    font-size: 28px;
+    text-transform: uppercase;
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 50px;
+}
+
+/* BUTTONS */
+
+.primary-button a,
+.primary-button button {
+    text-decoration: none;
+    margin-top: 15px;
+    padding: 10px 25px;
+    background-color: #e50914;
+    color: #fff;
+    font-weight: 700;
+    border-radius: 3px;
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.primary-button a:hover,
+.primary-button button:hover {
+    background-color: #b0060f;
+}
+
+/* BANNER SECTION */
+
+.banner {
+    background-image: url("../img/cinema-banner.jpg");
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+}
+
+.banner .left-side {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 80px 40px;
+    height: 100%;
+}
+
+.banner .logo img {
+    max-width: 180px;
+}
+
+.banner .tabs-content h4 {
+    color: #fff;
+    font-size: 26px;
+    font-weight: 700;
+}
+
+/* MOVIE BOOKING FORM */
+
+.banner .submit-form {
+    background-color: rgba(20, 20, 20, 0.95);
+    padding: 30px;
+    margin-top: 40px;
+    border-radius: 4px;
+}
+
+.submit-form h4 {
+    font-size: 20px;
+    font-weight: 700;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #333;
+    color: #fff;
+}
+
+.submit-form label {
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #bbb;
+}
+
+.submit-form select,
+.submit-form input[type="date"],
+.submit-form input[type="time"] {
+    margin-bottom: 15px;
+    width: 100%;
+    height: 40px;
+    background-color: #222;
+    border: none;
+    outline: none;
+    color: #ddd;
+    padding: 0 10px;
+}
+
+.submit-form button {
+    margin-top: 15px;
+    width: 100%;
+    height: 42px;
+    background-color: #e50914;
+    font-size: 14px;
+    color: #fff;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.submit-form button:hover {
+    background-color: #b0060f;
+}
+
+/* NOW SHOWING (Weather section transformed) */
+
+#weather {
+    margin-top: 80px;
+}
+
+.weather-content {
+    background-image: url("../img/now-showing-bg.jpg");
+    background-size: cover;
+    background-position: center;
+    padding: 60px 0;
+}
+
+#weather .tabs {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+#weather .tabs li {
+    display: inline-block;
+    width: 20%;
+}
+
+#weather .tabs a {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    height: 70px;
+    line-height: 70px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+#weather .tabs .active {
+    background-color: #e50914;
+    color: #fff;
+}
+
+.weather-item {
+    background-color: rgba(20, 20, 20, 0.8);
+    padding: 40px;
+    text-align: center;
+    border-radius: 4px;
+}
+
+.weather-item h6 {
+    font-size: 20px;
+    font-weight: 900;
+    margin-bottom: 20px;
+}
+
+.weather-item img {
+    width: 160px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.weather-item span {
+    font-size: 18px;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* SERVICES → SPECIAL FEATURES */
+
+.services {
+    margin-top: 100px;
+}
+
+.services .service-item {
+    background-color: #111;
+    color: #fff;
+    padding: 50px 20px;
+    text-align: center;
+    transition: 0.3s;
+    border-radius: 4px;
+}
+
+.services .service-item:hover {
+    background-color: #e50914;
+}
+
+.service-item h4 {
+    font-size: 18px;
+    text-transform: uppercase;
+    font-weight: 800;
+    margin-top: 20px;
+}
+
+/* MOVIE SECTIONS (recommended-hotel → recommended-movies) */
+
+#recommended-hotel {
+    margin-top: 100px;
+    background-color: #111;
+    padding: 60px 0;
+}
+
+#recommended-hotel .tabs li {
+    margin: 10px 0;
+}
+
+#recommended-hotel .tabs a {
+    background-color: #222;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    padding-left: 20px;
+    height: 60px;
+    line-height: 60px;
+}
+
+#recommended-hotel .tabs .active {
+    background-color: #e50914;
+}
+
+/* MOVIE POSTERS */
+
+.recommendedgroup img {
+    width: 100%;
+    border-radius: 4px;
+}
+
+/* MOST VISITED → POPULAR MOVIES */
+
+.visited-item {
+    background-color: #111;
+    border-radius: 4px;
+    box-shadow: 0 5px 15px #000;
+}
+
+.visited-item img {
+    width: 100%;
+    border-radius: 4px 4px 0 0;
+}
+
+.visited-item .text-content {
+    padding: 15px;
+}
+
+.visited-item h4 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.visited-item span {
+    font-size: 12px;
+    color: #e50914;
+}
+
+/* FOOTER */
+
+footer {
+    background-color: #111;
+    text-align: center;
+    padding: 60px 0;
+}
+
+footer .social-icons li a {
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    background-color: #222;
+    color: #fff;
+    font-size: 22px;
+    border-radius: 3px;
+}
+
+footer .social-icons li a:hover {
+    background-color: #e50914;
+}
+
+footer p {
+    color: #777;
+    margin-top: 20px;
+    font-size: 12px;
+}
+
+/* SCROLLER FIX */
+.nf-scroller {
+    display: flex;
+    overflow-x: auto;
+    gap: 16px;
+    scroll-behavior: smooth;
+    padding: 12px 50px; /* keep navigation arrows spacing */
+  }
+  
+  .nf-scroller::-webkit-scrollbar {
+    height: 8px;
+  }
+  .nf-scroller::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 4px;
+  }
+  
+  /* LEFT/RIGHT arrows */
+  .nf-scroller-wrap {
+    position: relative;
+    margin: 18px 0;
+  }
+  
+  .nf-prev, .nf-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background:#111;
+    color:#fff;
+    border:0;
+    width:40px;
+    height:40px;
+    border-radius:4px;
+    z-index:10;
+    font-size:22px;
+    cursor:pointer;
+  }
+  .nf-prev { left: 5px; }
+  .nf-next { right: 5px; }
+  
+  /* Movie Card */
+  .nf-item {
+    min-width: 220px;
+    max-width: 220px;
+    background:#111;
+    border-radius:6px;
+    overflow:hidden;
+    color:#fff;
+    text-align:left;
+    flex-shrink: 0; /* REQUIRED to keep items horizontal */
+  }
+  
+  .nf-item img {
+    width:100%;
+    height:330px;
+    object-fit:cover;
+  }
+  
+  .nf-item .card-body {
+    padding:10px;
+    font-size:14px;
+  }
+  
+  /* Booking form helper styling */
+  .booking-form .label {
+    color:#bbb;
+    font-size:12px;
+    text-transform:uppercase;
+    margin-bottom:6px;
+    display:block;
+  }
+  .price-row {
+    font-size:18px;
+    font-weight:700;
+    color:#e50914;
+    margin-top:6px;
+  }
+  .seat-summary {
+    color:#ddd;
+    font-size:13px;
+    margin-top:6px;
+  }
+  
+
+
+/* RESPONSIVE FIXES */
+
+@media (max-width: 991px) {
+    .banner .left-side {
+        padding: 40px 20px;
+    }
+    #weather .tabs li {
+        display: block;
+        width: 100%;
+    }
+    .service-item {
+        margin: 20px 0;
+    }
+}

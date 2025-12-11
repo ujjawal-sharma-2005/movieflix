@@ -1,0 +1,179 @@
+/* -------------------------------- 
+Primary style (Netflix Theme)
+-------------------------------- */
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  color: #ffffff;
+  background-color: #000000; /* Netflix black */
+}
+
+a {
+  color: #e50914; /* Netflix red */
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* -------------------------------- 
+Header (Netflix Style)
+-------------------------------- */
+.cd-header {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #000000;
+  border-bottom: 1px solid #111;
+}
+
+#cd-logo img {
+  filter: brightness(1.2);
+}
+
+.cd-primary-nav a {
+  color: #ffffff;
+  background: #000000;
+  border-top: 1px solid #222;
+}
+
+.cd-primary-nav a:hover {
+  color: #e50914;
+}
+
+/* Desktop nav */
+@media only screen and (min-width: 768px) {
+  .cd-header {
+    background-color: rgba(0,0,0,0.4);
+    backdrop-filter: blur(6px);
+  }
+
+  .cd-primary-nav a {
+    background: transparent;
+    color: #ffffff;
+    font-weight: 600;
+  }
+
+  .cd-primary-nav a:hover {
+    color: #e50914; 
+  }
+}
+
+/* -------------------------------- 
+Slider Container (Netflix Theme)
+-------------------------------- */
+.cd-hero {
+  position: relative;
+}
+
+.cd-hero-slider {
+  position: relative;
+  height: 600px;
+  overflow: hidden;
+  background-color: #000;
+}
+
+/* -------------------------------- 
+Slide Backgrounds (Replace with Movie Posters)
+-------------------------------- */
+.cd-hero-slider li {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* Replace these images with MOVIE POSTERS */
+.cd-hero-slider li:first-of-type {
+  background-image: url(../img/movie1.jpg); /*change to your movie poster */
+}
+.cd-hero-slider li:nth-of-type(2) {
+  background-image: url(../img/movie2.jpg);
+}
+.cd-hero-slider li:nth-of-type(3) {
+  background-image: url(../img/movie3.jpg);
+}
+
+/* -------------------------------- 
+Slide Text (Netflix Style)
+-------------------------------- */
+.cd-hero-slider h2, 
+.cd-hero-slider p {
+  color: #ffffff;
+  text-shadow: 0 4px 12px rgba(0,0,0,0.8);
+  max-width: 500px;
+}
+
+.cd-hero-slider h2 {
+  font-size: 3.5rem;
+  font-weight: 700;
+}
+
+.cd-hero-slider p {
+  font-size: 1.8rem;
+  opacity: 0.9;
+}
+
+/* -------------------------------- 
+Netflix Buttons
+-------------------------------- */
+.cd-hero-slider .cd-btn {
+  display: inline-block;
+  padding: 1.2em 1.6em;
+  margin-top: 1em;
+  background-color: #e50914; /* Netflix Red */
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 1px;
+  border-radius: 4px;
+  transition: 0.2s;
+}
+
+.cd-hero-slider .cd-btn.secondary {
+  background-color: #333;
+}
+
+.cd-hero-slider .cd-btn:hover {
+  background-color: #f6121d;
+}
+
+.cd-hero-slider .cd-btn.secondary:hover {
+  background-color: #444;
+}
+
+/* -------------------------------- 
+Slider Navigation (Dots/Bottom Menu)
+-------------------------------- */
+.cd-slider-nav {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.cd-slider-nav .cd-marker {
+  background-color: #e50914; /* Netflix red */
+  box-shadow: inset 0 2px 0 black;
+}
+
+.cd-slider-nav a {
+  color: #bbb;
+}
+
+.cd-slider-nav li.selected a {
+  color: #ffffff;
+}
+
+.cd-slider-nav a:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Keep all transitions same (netflix style keeps smooth animations) */
